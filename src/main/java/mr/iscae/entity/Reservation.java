@@ -18,10 +18,10 @@ public class Reservation {
     private Date date_debut;
     private Date date_fin;
     @ManyToOne
-    @JoinColumn(name="appartement_id")
+    @JoinColumn(name="appartement_id", nullable = false)
     private Appartement appartement;
-    @ManyToOne
-    @JoinColumn(name="user_id")
-    private Utilisateur client;
+   @ManyToOne 
+   @JoinColumn(name="user_id",nullable =false)
+   private AppUser client;
 
 }

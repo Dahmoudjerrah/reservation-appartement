@@ -1,12 +1,12 @@
 package mr.iscae.entity;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @Data
@@ -19,5 +19,7 @@ public class Appartement {
     private String name;
     private int nbr_de_chambers;
     private double prix;
+    // @OneToMany(cascade = CascadeType.ALL)
+    // private List<Reservation> reservations = new ArrayList();
 
 }
