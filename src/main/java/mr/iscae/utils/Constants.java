@@ -25,5 +25,7 @@ public class Constants {
     
     public static final String APPARTEMENT = "/appartement";
     public static final String RESERVATION = "/reservation";
+     //public static final String ADMINCON = "/admin";
+
 }
 

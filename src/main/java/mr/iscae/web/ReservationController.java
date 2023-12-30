@@ -8,7 +8,9 @@ import mr.iscae.utils.Constants;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -19,7 +21,7 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 @RequestMapping(Constants.APP_ROOT+Constants.RESERVATION)
 public class ReservationController {
-   // @Qualifier("")
+   
     @Autowired
     private ReservationService service;
 
@@ -32,6 +34,10 @@ public class ReservationController {
     @GetMapping("/all")
     public ResponseEntity<List<Reservation>> getAllServers(){
         return ResponseEntity.status(HttpStatus.OK).body(service.findAll());
+    }
+    @DeleteMapping("/anuller/{id}")
+    public boolean delete(@PathVariable("id")Long  id){
+        return service.delete(id) ;
     }
 
 }

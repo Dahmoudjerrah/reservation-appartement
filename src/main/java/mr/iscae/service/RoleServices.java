@@ -11,7 +11,9 @@ public interface RoleServices {
 
     public Role createRole(Role role);
 
-    public Role updateRole(Role updatedRole);
+    public Role updateRole(Long id,Role updatedRole);
 
     public void deleteRole(long id);
+  
+    public String  add_permision_to_role(Long idrole,Long idpermision);
 }

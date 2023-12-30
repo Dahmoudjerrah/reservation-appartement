@@ -8,11 +8,13 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import mr.iscae.entity.AppUser;
+
 import mr.iscae.repositrie.UserRepo;
 import mr.iscae.entity.Role;
 import mr.iscae.repositrie.RoleRepository;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class UserServiceImpl implements UserServices {
@@ -39,6 +41,45 @@ public class UserServiceImpl implements UserServices {
     public AppUser fidUserByUsername(String username) {
         return appUserRepository.findByUsername(username).get();
     }
+    @Override
+    public String add_role_to_user(Integer iduser,Long idrole){
+         Optional<AppUser> userOptional = appUserRepository.findById(iduser);
+         Optional<Role> roleOptional=roleRepository.findById(idrole);
+         if(userOptional.isPresent() && roleOptional.isPresent()){
+            AppUser user=userOptional.get();
+            Role role=roleOptional.get();
+            user.setRole(role);
+            appUserRepository.save(user);
+            return "role of user udated";
+         }
+        
+         else{
+            return "role ou user note found";
+         }
+        }
+        @Override
+        public String updatepasswrd(Integer id,AppUser user){
+            Optional<AppUser> userOptional=appUserRepository.findById(id);
+            if(userOptional.isPresent()){
+                AppUser newpass=userOptional.get();
+                newpass.setPassword(user.getPassword());
+                appUserRepository.save(newpass);
+                return "passwrd apdated";
+            }
+            return "user not found";
+        }
+      @Override
+      public AppUser findUserByemail (String email) { 
+        Optional<AppUser> userOptional=appUserRepository.findByEmail(email);
+        if(userOptional.isPresent()){
+        return appUserRepository.findByEmail(email).get();
+        }
+        return null;
+      }   
+
+
+
+    
 
     @Override
     public void DeleteUser(Integer id) {

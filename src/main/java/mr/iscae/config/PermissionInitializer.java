@@ -47,9 +47,9 @@ public class PermissionInitializer implements ApplicationRunner{
                 "list_permission", "view_permission", "create_permission", "update_permission", "delete_permission",
                 "list_user", "update_user_password", "update_user_role", "delete_user", "list_account", "view_account","create_permission",
                 "update_user_password", "get_profile", "update_profile","create_company","view_company",
-                "list_appartement","create_appartement",
+                "list_appartement","create_appartement","add_role_to_user",
                 "update_appartement","get_appartement_byid","appartement_list_reservation","list_reservation",
-                "create_reservation","delete_appartement"
+                "create_reservation","delete_appartement","delete_reservation","add_permision_to_role"
         };
 
         for (String perm : perm_list) {

@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.DeleteMapping;
 //import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -37,21 +38,21 @@ public class AppartementController {
          
 
     @GetMapping("/{id}")
-    public ResponseEntity<Appartement> getCompanyByID(@PathVariable("id") Long id){
+    public ResponseEntity<Appartement> getAppartementByID(@PathVariable("id") Long id){
         return ResponseEntity.status(HttpStatus.OK).body(service.findById(id));
     }
-    // @DeleteMapping("/{id}")
-    // public ResponseEntity<Appartement> delete(@PathVariable("id") Long id){
-    //     return ResponseEntity.status(HttpStatus.OK).body(service.delete(id));
-    // }
+    @DeleteMapping("/{id}")
+    public Boolean delete(@PathVariable("id") Long id){
+        return (service.delete(id));
+    }
 
     @PutMapping("/update/{id}")
-    public ResponseEntity<String> updateCompany(@RequestBody Appartement appartement, @PathVariable("id") Long id){
+    public ResponseEntity<String> updateappartemeent(@RequestBody Appartement appartement, @PathVariable("id") Long id){
         return ResponseEntity.status(HttpStatus.OK).body(service.update(appartement, id));
     }
 
-    @GetMapping("/company-servers/{idCompany}")
-    public ResponseEntity<Object> getCompanyServers(@PathVariable Long idCompany){
+    @GetMapping("/appartement-reservation/{idappartement}")
+    public ResponseEntity<Object> geappartementreservation(@PathVariable Long idCompany){
         return service.getCompanyServers(idCompany);
     }
 }
